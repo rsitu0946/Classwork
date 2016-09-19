@@ -15,10 +15,13 @@ public class OOPExample {
 	 */
 	public static void main(String[] args) {
 		//construct a student
-		Student jillian = new Senior("Jillian");
+		Student jillian = new Senior("Jillian", "programmer"); 
+		//polymorphism - calling a senior a student
+		
 		Student jordan = new Student("Jordan");
 		Student joseph = new Student("Joseph");
-		jillian.talk();
+		((Student)jillian).talk();
+		
 		jordan.talk();
 		joseph.talk();
 	}
