@@ -1,26 +1,30 @@
+package chatbot;
+
 import java.util.Scanner;
 
-public class StringPractice {
+public class RyanMain {
 
 	static Scanner input; 
 	static String user;
 	static boolean inLoop;
 	static String response;
+	static Topic school;
 	
 	public static void main(String[] args) {
-		createAScanner();
+		createTopics();
 		promptName();
 		talkForever();	
 	}
 	
-	private static void promptName(){
+	public static void promptName(){
 		print("Hello, human! I am a board covered "
 				+ "with semiconductors \n " // \n makes a new line in console
 				+ "and other "
 				+ "such electronic components. "
 				+ "What is your name?");
 		user = input.nextLine();
-		print("Awesome! I will call you "+user+" until you terminate me.");
+		print("Awesome! I will call you "+user+" until you "
+				+ "terminate me.");
 	}
 
 	public static void talkForever(){
@@ -30,6 +34,12 @@ public class StringPractice {
 			response = getInput();									
 			if(response.indexOf("good") >= 0){
 				print("I'm so happy you're good.");
+			}
+			
+			else if(response.indexOf("school") > 0)
+			{
+				inLoop = false; //exit this loop
+				school.talk();
 			}
 			else{
 				print("I'm sorry, I don't understand you.");
@@ -80,26 +90,8 @@ public class StringPractice {
 		System.out.println(printString);
 	}
 
-	public static void createAScanner() {
+	public static void createTopics() {
 		input = new Scanner(System.in);
-	}
-	
-	public static void demonstrateStringMethods(){
-		//String text = new String("Hello World");
-		String text1 = "Hello World";//same as above
-		String text2 = "Hello ";
-		String text3 = "World";
-		
-		if(text1 == text2+text3){
-			System.out.println("These strings are equal.");
-		}			
-		System.out.println(text1);
-		System.out.println(text2+text3);
-		
-		String word1 = "Aardvark";
-		String word2 = "Zyzzyva";
-		
-		if(word1.compareTo(word2) < 0)System.out.println("Word1 is before word2,"
-				+ " lexicographically.");
-	}
+		school = new School();
+	}	
 }
