@@ -12,6 +12,11 @@ public class RyanMain {
 	
 	public static void main(String[] args) {
 		createTopics();
+		
+		String s1 = "a";
+		String s2 = "b";
+		System.out.println(s1.compareTo(s2));
+		
 		promptName();
 		talkForever();	
 	}
@@ -32,11 +37,11 @@ public class RyanMain {
 		while(inLoop){
 			print("Greetings, "+user+" . How are you?");
 			response = getInput();									
-			if(response.indexOf("good") >= 0){
+			if(findKeyword(response, "good", 0)){
 				print("I'm so happy you're good.");
 			}
 			
-			else if(response.indexOf("school") > 0)
+			else if(response.indexOf("school") >= 0)
 			{
 				inLoop = false; //exit this loop
 				school.talk();
@@ -47,6 +52,42 @@ public class RyanMain {
 		}
 	}
 	
+	public static boolean findKeyword(String searchString, String key, int startIndex) {
+		//delete white space
+		String phrase = searchString.trim();
+		
+		//set all letters to lowercase
+		key = key.toLowerCase();
+		
+		//find position of key
+		int psn = phrase.indexOf(key);
+		
+		//keep looking for the word until you find the right context
+		while(psn >= 0){
+			String before = " ";
+			String after = " ";
+			
+			//if the phrase does not end with this word 
+			if(psn + key.length() < phrase.length()){
+				after = phrase.substring(psn + key.length(), psn + key.length() + 1).toLowerCase();
+			}
+
+			//if the phrase does not begin with this word
+			if(psn >0){
+					before = phrase.substring(psn-1,psn).toLowerCase();
+			}
+			
+			if(before.compareTo("a") < 0 && after.compareTo("a") < 0){
+				return true;
+			}
+			//in case the keyword was not found yet,
+			//check the rest of the string
+			psn = phrase.indexOf(key,psn+1);
+		}
+		
+		return false;
+	}
+
 	public static void promptInput() {
 		print("Try inputting a String!");
 		String userInput = input.nextLine();
