@@ -10,6 +10,7 @@ public class RyanMain {
 	static String response;
 	static Topic school;
 	static Topic like;
+	static Topic hello;
 	
 	public static void main(String[] args) {
 		createTopics();
@@ -32,20 +33,26 @@ public class RyanMain {
 	public static void talkForever(){
 		inLoop = true;
 		while(inLoop){
-			System.out.println("Greetings, "+user+" . How are you?");
+			System.out.println("Tell me something.");
 			response = getInput();									
 			if(findKeyword(response, "good", 0) >= 0){
-				System.out.println("I'm so happy you're good. \n");
+				System.out.println("I'm so happy you're good.");
+				print("hi");
 			}
-			else if(findKeyword(response, "like", 0)) >= 0
-			{
+			else if(like.isTriggered(response)){
 				
+				inLoop = false;
+				like.talk();
 			}
 			
-			else if(findKeyword(response,"school",0) >= 0)
+			else if(school.isTriggered(response))
 			{
 				inLoop = false; //exit this loop
 				school.talk();
+			}
+			else if(hello.isTriggered(response)){
+				inLoop = false;
+				hello.talk();
 			}
 			else{
 				System.out.println("I'm sorry, I don't understand you. \n");
@@ -139,36 +146,36 @@ public class RyanMain {
 	}
 	
 	public static void print (String s){ 
-	//if you don't want to type System.out.println()
-		String printString = "";
-		int cutoff = 35;
-		//check to see if there are words to add
-		//in other words, is the length of s > 0
-		while(s.length() > 0){
-			String currentLine = "";
-			String nextWord = "";
-			//while the currentLine and nextWord are less 
-			//than the cutoff, AND there are still
-			//words to add, do the following loop
-			while(currentLine.length() +
-				nextWord.length() <= cutoff && 
-				s.length() > 0){
-				//add the next word to the line
-				currentLine += nextWord;
-				//remove that word
-				s = s.substring(nextWord.length());
-				//get the following word
-				int endOfWord = s.indexOf(" ");
-				//check to see if this is the last word
-				if(endOfWord == -1){
-					endOfWord = s.length()-1;
-				}
-				//get the next word and space
-				nextWord = s.substring(0, endOfWord+1); 
-			}
-			printString += currentLine = "\n";
-		}
-		
+//	//if you don't want to type System.out.println()
+		String printString = s;
+//		int cutoff = 35;
+//		//check to see if there are words to add
+//		//in other words, is the length of s > 0
+//		while(s.length() > 0){
+//			String currentLine = "";
+//			String nextWord = "";
+//			//while the currentLine and nextWord are less 
+//			//than the cutoff, AND there are still
+//			//words to add, do the following loop
+//			while(currentLine.length() +
+//				nextWord.length() <= cutoff && 
+//				s.length() > 0){
+//				//add the next word to the line
+//				currentLine += nextWord;
+//				//remove that word
+//				s = s.substring(nextWord.length());
+//				//get the following word
+//				int endOfWord = s.indexOf(" ");
+//				//check to see if this is the last word
+//				if(endOfWord == -1){
+//					endOfWord = s.length()-1;
+//				}
+//				//get the next word and space
+//				nextWord = s.substring(0, endOfWord+1); 
+//			}
+//			printString += currentLine = "\n";
+//		}
+//		
 		System.out.println(printString);
 	}
 
@@ -176,5 +183,6 @@ public class RyanMain {
 		input = new Scanner(System.in);
 		school = new School();
 		like = new RyanLike();
+		hello = new RyanHello();
 	}	
 }

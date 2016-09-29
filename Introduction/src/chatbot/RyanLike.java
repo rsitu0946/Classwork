@@ -23,8 +23,12 @@ public class RyanLike implements Topic{
 			else{
 				RyanMain.print("I don't understand you.");
 			}
-				
-			
 		}	
+	}
+	public boolean isTriggered(String userInput) {
+		if(RyanMain.findKeyword(userInput, "like", 0) >= 0){
+			return true;
+		}
+		return false;
 	}
 }
