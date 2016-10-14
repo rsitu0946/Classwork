@@ -14,6 +14,6 @@ public class SampleElement {
 	
 	//the number is stored as a field
 	public void increase(){
-		number++;
+		number++;	
 	}
 }
