@@ -33,7 +33,7 @@ public class ArraysMain {
 		changeArray(someStrings);
 		System.out.println("After \"changeArray\" method " +someStrings[99]);
 		changeArrayElement(someStrings, 99);
-		System.out.println("After \"changeArray\" method " +someStrings[99]);
+		System.out.println("After \"changeArrayElement\" method " +someStrings[99]);
 	}
 	
 	private static void changeArrayElement(String[] someStrings, int i) {
