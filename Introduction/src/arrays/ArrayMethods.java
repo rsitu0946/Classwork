@@ -13,11 +13,19 @@ public class ArrayMethods {
       * says that it isn't perfect!
       * */
     	
-    	//use this array to test functions
+    	//use to test reverseOrder
     	int[]testArray = {0, 2, 1, 5, 3, 4};
+    	
+    	//use to test isSorted
+    	int[]sortedArray = {5, 4, 3 , 2, 1};
+    	int[]unsortedArray = {1, 2, 3, 4, 5};
     	
     	reverseOrder(testArray);
     	//displays {5, 4, 3, 2, 1}
+    	
+    	isSorted(sortedArray);
+    	//displays "The array is sorted." 
+    	//because sortedArray is sorted in descending order
     }
     
     public static int searchUnsorted(int[] arrayToSearch, int key){
@@ -41,14 +49,17 @@ public class ArrayMethods {
     }
     
     public static boolean isSorted(int[] array){
-        /**
-         * This method takes an in array as a parameter and returns 'true' if the array is already sorted in DESCENDING order
-         * */
-    	boolean isSorted = true;
-    	for(int index = 0; index > array.length; index++){
-    		if(array[index])
+    	/**
+    	 * This method takes an in array as a parameter and returns 'true' if the array is already sorted in DESCENDING order
+    	 * */
+    	for(int index = 0; index < array.length-1; index++){
+    		if(array[index+1] > array[index]){ //checks to see if the next item is larger than the previous item
+    			System.out.println("The array is not sorted.");
+    			return false;
+    		}
     	}
-        return false;
+    	System.out.println("The array is sorted.");
+    	return true;
     }
     
     
