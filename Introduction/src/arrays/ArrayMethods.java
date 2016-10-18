@@ -14,14 +14,14 @@ public class ArrayMethods {
       * */
     	
     	//use to test reverseOrder
-    	int[]testArray = {0, 2, 1, 5, 3, 4};
+    	int[]testArray = {2, 1, 5, 3, 4};
     	
     	//use to test isSorted
     	int[]sortedArray = {5, 4, 3 , 2, 1};
     	int[]unsortedArray = {1, 2, 3, 4, 5};
     	
     	reverseOrder(testArray);
-    	//displays {5, 4, 3, 2, 1}
+    	//displays {4, 3, 5, 1, 2}
     	
     	isSorted(sortedArray);
     	//displays "The array is sorted." 
