@@ -17,7 +17,7 @@ public class ArrayMethods {
     	int[]testArray = {2, 1, 5, 3, 4};
     	
     	//use to test isSorted
-    	int[]sortedArray = {5, 4, 3 , 2, 1};
+    	int[]sortedArray = {5, 4, 3, 2, 1};
     	int[]unsortedArray = {1, 2, 3, 4, 5};
     	
     	reverseOrder(testArray);
@@ -95,7 +95,7 @@ public class ArrayMethods {
          * 
          * */
     	//make the for loop start at the end of the array and work its way down
-    	for(int index = array.length-1; index > 0; index--){
+    	for(int index = array.length-1; index >= 0; index--){
     		System.out.println(array[index]);
     	}
     }
