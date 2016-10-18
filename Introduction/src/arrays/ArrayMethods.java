@@ -1,6 +1,5 @@
 package arrays;
 
-
 public class ArrayMethods {
 
     public static void main(String[] args) {
@@ -13,8 +12,12 @@ public class ArrayMethods {
       * DO NOT spend hours and hours trying to fix perfect code just because my test
       * says that it isn't perfect!
       * */
-    	int[]testArray = {0, 1, 2, 3, 4, 5};
+    	
+    	//use this array to test functions
+    	int[]testArray = {0, 2, 1, 5, 3, 4};
+    	
     	reverseOrder(testArray);
+    	//displays {5, 4, 3, 2, 1}
     }
     
     public static int searchUnsorted(int[] arrayToSearch, int key){
@@ -41,6 +44,10 @@ public class ArrayMethods {
         /**
          * This method takes an in array as a parameter and returns 'true' if the array is already sorted in DESCENDING order
          * */
+    	boolean isSorted = true;
+    	for(int index = 0; index > array.length; index++){
+    		if(array[index])
+    	}
         return false;
     }
     
@@ -73,7 +80,8 @@ public class ArrayMethods {
          * array = {-6, 16, 10, 9, 1, 5}
          * 
          * */
-    	for(int index = array.length -1; index > 0; index--){
+    	//make the for loop start at the end of the array and work its way down
+    	for(int index = array.length-1; index > 0; index--){
     		System.out.println(array[index]);
     	}
     }
