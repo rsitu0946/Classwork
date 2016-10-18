@@ -13,6 +13,8 @@ public class ArrayMethods {
       * DO NOT spend hours and hours trying to fix perfect code just because my test
       * says that it isn't perfect!
       * */
+    	int[]testArray = {0, 1, 2, 3, 4, 5};
+    	reverseOrder(testArray);
     }
     
     public static int searchUnsorted(int[] arrayToSearch, int key){
@@ -71,6 +73,9 @@ public class ArrayMethods {
          * array = {-6, 16, 10, 9, 1, 5}
          * 
          * */
+    	for(int index = array.length -1; index > 0; index--){
+    		System.out.println(array[index]);
+    	}
     }
     
     public static int countDifferences(int[] array1, int[] array2){
