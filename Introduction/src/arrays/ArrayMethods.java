@@ -26,6 +26,9 @@ public class ArrayMethods {
     	isSorted(sortedArray);
     	//displays "The array is sorted." 
     	//because sortedArray is sorted in descending order
+    	
+    	//unsortedArray will display "The array is not sorted."
+    	//because it is sorted in ascending order
     }
     
     public static int searchUnsorted(int[] arrayToSearch, int key){
