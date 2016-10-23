@@ -2,7 +2,10 @@ package arrays;
 
 public class ArrayMethods {
 
-    public static void main(String[] args) {
+    private static int temp;
+
+
+	public static void main(String[] args) {
     
      /**
       * IMPORTANT NOTE: 
@@ -41,7 +44,7 @@ public class ArrayMethods {
     	 * */
     	for(int i = 0; i < arrayToSearch.length; i++){
     		if(arrayToSearch[i] == key){
-    			System.out.println("the " +i+ " is here");
+    			// System.out.println("the " +i+ " is here");
     			return i;
     		}
     	}
@@ -49,14 +52,22 @@ public class ArrayMethods {
     }
     
     public static int searchSorted(int[] sortedArrayToSearch, int key){
-    /**
-     * this method is exactly like the one above, except the parameter sortedArrayToSearch will
-     * always be sorted in DESCENDING order. Again return the index of the key or return -1
-     * if the key is not in the array
-     * 
-     * Note: You should attempt to write a method that is more efficient that searchUnsorted
-     * */
-     return -1;
+    	/**
+    	 * this method is exactly like the one above, except the parameter sortedArrayToSearch will
+    	 * always be sorted in DESCENDING order. Again return the index of the key or return -1
+    	 * if the key is not in the array
+    	 * 
+    	 * Note: You should attempt to write a method that is more efficient that searchUnsorted
+    	 * */
+    	for( int i = 0; i < sortedArrayToSearch.length/2; ++i ) 
+    	{ 
+    	  temp = sortedArrayToSearch[i]; 
+    	  sortedArrayToSearch[i] = sortedArrayToSearch[sortedArrayToSearch.length - i - 1]; 
+    	  sortedArrayToSearch[sortedArrayToSearch.length - i - 1] = temp; 
+    	  return i;
+    	}
+    	
+    	return -1;
     }
     
     public static boolean isSorted(int[] array){
@@ -65,11 +76,11 @@ public class ArrayMethods {
     	 * */
     	for(int index = 0; index < array.length-1; index++){
     		if(array[index+1] > array[index]){ //checks to see if the next item is larger than the previous item
-    			System.out.println("The array is not sorted.");
+    			//System.out.println("The array is not sorted.");
     			return false;
     		}
     	}
-    	System.out.println("The array is sorted.");
+    	//System.out.println("The array is sorted.");
     	return true;
     }
     
@@ -102,10 +113,16 @@ public class ArrayMethods {
          * array = {-6, 16, 10, 9, 1, 5}
          * 
          * */
-    	//make the for loop start at the end of the array and work its way down
-    	for(int index = array.length-1; index >= 0; index--){
-    		System.out.println(array[index]);
+//    	for(int index = array.length-1; index >= 0; index--){
+//    		System.out.println(array[index]);
+//    	}
+    	
+    	for(int i = 0; i < array.length/2; i++){
+    		int temp = array[i];
+    		array[i] = array[array.length-i-1];
+    		array[array.length-i-1] = temp;
     	}
+    	//void - System.out.println(array);
     }
     
     public static int countDifferences(int[] array1, int[] array2){
