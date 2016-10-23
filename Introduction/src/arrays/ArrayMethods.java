@@ -29,15 +29,23 @@ public class ArrayMethods {
     	
     	//unsortedArray will display "The array is not sorted."
     	//because it is sorted in ascending order
+    	
+    	searchUnsorted(testArray,1);
     }
     
     public static int searchUnsorted(int[] arrayToSearch, int key){
-    /**
-     * this method take an unsorted int array (arrayToSearch) and returns an 
-     * int corresponding to the index of a key, if it is in the array
-     * if the key is not in the array, this method returns -1
-     * */
-     return -1;
+    	/**
+    	 * this method take an unsorted int array (arrayToSearch) and returns an 
+    	 * int corresponding to the index of a key, if it is in the array
+    	 * if the key is not in the array, this method returns -1
+    	 * */
+    	for(int i = 0; i < arrayToSearch.length; i++){
+    		if(arrayToSearch[i] == key){
+    			System.out.println("the " +i+ " is here");
+    			return i;
+    		}
+    	}
+    	return -1;
     }
     
     public static int searchSorted(int[] sortedArrayToSearch, int key){
