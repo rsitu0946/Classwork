@@ -19,21 +19,8 @@ public class ArrayMethods {
     	//use to test reverseOrder
     	int[]testArray = {2, 1, 5, 3, 4};
     	
-    	//use to test isSorted
-    	int[]sortedArray = {5, 4, 3, 2, 1};
-    	int[]unsortedArray = {1, 2, 3, 4, 5};
-    	
-    	reverseOrder(testArray);
-    	//displays {4, 3, 5, 1, 2}
-    	
-    	isSorted(sortedArray);
-    	//displays "The array is sorted." 
-    	//because sortedArray is sorted in descending order
-    	
-    	//unsortedArray will display "The array is not sorted."
-    	//because it is sorted in ascending order
-    	
-    	searchUnsorted(testArray,1);
+    	cycleThrough(testArray, 2);
+    	System.out.println(testArray);
     }
     
     public static int searchUnsorted(int[] arrayToSearch, int key){
@@ -136,7 +123,13 @@ public class ArrayMethods {
          * countDifferences({1,2,3},{1,3,2}) returns 2, since '2' and '3' are both present, but different locations
          * 
          * */
-         return 0;
+    	int diff = 0;
+    	for(int i = 0; i < array1.length; i++){
+    		if(array1[i] != array2[i]){
+    			diff++;
+    		}
+    	}
+        return diff;
     }
     
 
@@ -204,7 +197,25 @@ public class ArrayMethods {
          * CHALLENGE
          * For extra credit, make your method handle NEGATIVE n
          * */
+    	
+    	for(int i = 0; i < n; i++){
+    		cycleOnce(array);
+    	}
     }
+    
+    private static void cycleOnce(int[] array){
+    	for(int index = 0; index < array.length-1; index++){
+			int placeholder = array[index+1];
+			array[index+1] = array[index];
+			array[index] = placeholder;
+		}
+    }
+    
+    private static void swap(int[] arr, int i, int j) {
+		int placeholder = arr[j];
+		arr[j] = arr[i];
+		arr[i] = placeholder;	
+	}
     
 
 }
