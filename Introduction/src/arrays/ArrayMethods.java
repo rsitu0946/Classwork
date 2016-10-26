@@ -73,18 +73,85 @@ public class ArrayMethods {
     
     
     public static double[] getStats(double[] array){
-        /** 
-         * This method return a double[] contain a WHOLE BUNCH of stats
-         * The double array must keep the following stats about the array parameter:
-         * index 0 = the mean
-         * index 1 = the max
-         * index 2 = the min
-         * index 3 = the median
-         * index 4 = the number of values greater than or equal to the mean
-         * index 5 = the number of values below the mean
-         * */
-         double[] stats = new double[6];
-         return stats;
+    	/** 
+    	 * This method return a double[] contain a WHOLE BUNCH of stats
+    	 * The double array must keep the following stats about the array parameter:
+    	 * index 0 = the mean
+    	 * index 1 = the max
+    	 * index 2 = the min
+    	 * index 3 = the median
+    	 * index 4 = the number of values greater than or equal to the mean
+    	 * index 5 = the number of values below the mean
+    	 * */
+    	double[] sortedList = selectionSort(array);
+    	double[] stats = new double[6];
+    	double sum = 0;
+    	for(int i = 0; i< array.length;i++){
+    		sum += array[i];
+    	}
+
+    	stats[0] = sum/array.length;
+
+    	stats[1] = sortedList[sortedList.length-1];
+
+    	stats[2] = sortedList[0];
+
+    	if(sortedList.length % 2 == 0){
+    		double st = sortedList[(sortedList.length/2)-1];
+    		double nd = sortedList[(sortedList.length/2)];
+    		double x = (st+nd)/2;
+    		//         double x2 = x*100;   
+    		//         int x3 = (int) x2;
+    		//         double x4 = (double) x3/100;          
+    		stats[3] = x;
+    	}
+    	else{
+    		stats[3] = sortedList[(int)(sortedList.length/2)];
+
+    	}
+
+    	int greater = 0;
+    	for(int i = 0; i < array.length; i++){
+    		if(sum/array.length <= array[i]){
+    			greater+=1;
+    		}
+    	}
+    	stats[4] = greater;
+
+    	int lesser = 0;
+    	for(int i = 0; i < array.length; i++){
+    		if(sum/array.length > array[i]){
+    			lesser+=1;
+    		}
+    	}
+    	stats[5] = lesser;
+
+
+    	return stats;
+    }
+    
+
+	public static double[] selectionSort(double[] array){
+		for (int i = 0; i < array.length - 1; i++){
+			int tempLowIndex = i;
+			for (int j = i + 1; j < array.length; j++){
+				if (array[j] < array[tempLowIndex]){
+					tempLowIndex = j;
+				}
+			}
+			if(tempLowIndex!=i){
+				swap1(array, tempLowIndex, i);
+			} 
+		}
+		return array;
+	}
+	
+	public static double[] swap1(double[] array, int first, int second){
+        double[] test = array;
+        double save = test[first];
+        test[first] = test[second];
+        test[second] = save;
+        return test;
     }
     
     public static void reverseOrder(int[] array){
@@ -211,11 +278,14 @@ public class ArrayMethods {
 		}
     }
     
-    private static void swap(int[] arr, int i, int j) {
-		int placeholder = arr[j];
-		arr[j] = arr[i];
-		arr[i] = placeholder;	
+    private static double [] swap(double[] array, int i, int j) {
+		double placeholder = array[j];
+		array[j] = array[i];
+		array[i] = placeholder;	
+		return array;
 	}
+    
+    
     
 
 }
