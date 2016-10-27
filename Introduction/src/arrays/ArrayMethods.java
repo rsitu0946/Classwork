@@ -210,8 +210,19 @@ public class ArrayMethods {
          * longestSequence({0,9,10,11,4,3,8,9}) returns '3', since '9,10,11' is 3 integers long
          * longestSequence({0,9,8,11,4,3,7,9}) returns '1', since there are no consecutive integers
          * */
-        
-        return 0;
+        int consec = 1;
+        int pos = 1;
+        for(int i = 0; i < array1.length-1; i++){
+            if(array1[i]+1 == array1[i+1]){
+                pos++;
+            }else{
+                pos = 1;    
+            } 
+            if(pos >= consec){
+                consec = pos;
+            }
+        }
+        return consec;
     }
 
     public static int longestSharedSequence(int[] array1, int[] array2){
