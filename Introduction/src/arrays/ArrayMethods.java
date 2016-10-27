@@ -241,15 +241,31 @@ public class ArrayMethods {
     }
 
     public static int[] generateDistinctItemsList(int n){
-        /**
-         * This method needs to generate an int[] of length n that contains distinct, random integers
-         * between 1 and 2n 
-         * The method will be tested by verifying that the array you return is n items long,
-         * contains only entries between 1 and 2n (inclusive) and has no duplicates
-         * 
-         * */
-        return null; 
+    	/**
+    	 * This method needs to generate an int[] of length n that contains distinct, random integers
+    	 * between 1 and 2n 
+    	 * The method will be tested by verifying that the array you return is n items long,
+    	 * contains only entries between 1 and 2n (inclusive) and has no duplicates
+    	 * 
+    	 * */
+    	int[] distinctArray = new int[n];
+    	int rand;
+    	for(int i = 0; i < distinctArray.length; i++){
+    		boolean original = false;
+    		do{
+    			rand = (int)(Math.random()*(2*n))+1;
+    			original = true;
+    			for(int j = 0; j < distinctArray.length; j++){
+    				if(rand == distinctArray[j]){
+    					original = false;
+    				}
+    			}
+    		}while(!original);
+    		distinctArray[i] = rand;
+    	}
+    	return distinctArray; 
     }
+    
     
     
     public static void cycleThrough(int[] array, int n){
