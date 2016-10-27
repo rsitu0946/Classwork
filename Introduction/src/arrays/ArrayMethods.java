@@ -236,8 +236,53 @@ public class ArrayMethods {
          *          since the sequence '9,6,3,4,3' is in both arrays and is 5 integers long, it doesn't matter that the sequence begins at different indices 
          * longestSequence({9,6,1,4,3,6,7,9}, {9,6,5,8,3,6,7,0}) returns '3', since the sequence '3,6,7' is in both arrays and is 3 integers long
          * */
-        
-        return 0;
+    	int longest = 1;
+    	boolean isShared = false;
+    	int sequence = 0;
+    	if(array1.length > array2.length){
+    		for(int i = 0; i < array1.length; i++){
+    			for(int j = 0; j < array2.length; i++){
+    				if(array1[i] == array2[j]){
+    					isShared = true;
+    				}else{
+    					isShared = false;
+    				}
+    				if(isShared){
+    					sequence++;
+    					i++;
+    				}else if(sequence > longest){
+    					longest = sequence;
+    					sequence = 0;
+    				}else{
+    					sequence = 0;
+    				}
+    			}
+    		}
+    	}else{
+    		for(int i = 0; i < array2.length; i++){
+    			for(int j = 0; j < array1.length; j++){
+    				if(array2[i] == array1[j]){
+    					isShared = true;
+    				}else{
+    					isShared = false;
+    				}
+    				if(isShared){
+    					sequence++;
+    					i++;
+    				}else if(sequence > longest){
+    					longest = sequence;
+    					sequence = 0;
+    				}else{
+    					sequence = 0;
+    				}				
+    			}
+    		}
+    	}
+        if(sequence > longest){
+        	return sequence;
+        }else{
+        	return longest;
+        }
     }
 
     public static int[] generateDistinctItemsList(int n){
