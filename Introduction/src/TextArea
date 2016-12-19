@@ -1,0 +1,38 @@
+package gui.components;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+
+public class TextArea extends TextLabel {
+	
+	private String text;
+	private String font;
+	private int size;
+
+	public TextArea(int x, int y, int w, int h, String text) {
+		super(x, y, w, h, text);
+		this.text = text;
+		this.font = "Helvetica";
+		this.size = 20;
+		update();
+	}
+
+	@Override
+	public void update(Graphics2D g) {
+		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+		g.setColor(Color.black);
+		g.setFont(new Font(font,Font.PLAIN,size));
+		FontMetrics fm = g.getFontMetrics();
+		if(text != null){
+			g.drawString(text, 4, getHeight()-5);
+		}
+		//String[] words = getText().split(" ");//splits word at every space
+		//fm.getHeight();
+		//fm.getAscent();
+		//fm.getDescent();
+		//fm.stringWidth(text);
+	}
+}
